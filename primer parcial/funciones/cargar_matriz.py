@@ -7,12 +7,19 @@ def cargar_matriz_notas() -> list:
         else:
             break  # salimos del bucle porque no hay más alumnos para ingresar.
 
-    matriz = [[] * int(n)]  # creamos una matriz horizontal de n columnas.
+    while True:
+        x = input('Ingrese la cantidad de notas: ')
+        if not n.isdigit() and not 0 < int(n):  # verifica que el ingreso sea un número natural y que sea mayor que 0.
+            print("ingrese un número natural")
+        else:
+            x = int(x)
+            break  # salimos del bucle porque no hay más alumnos para ingresar.
 
+    matriz = [[[0] * int(n)] for _ in range(x)]  # creamos una matriz vacia de n * x
     for a in range(int(n)):  # hace que el prompt aparezca solo la cantidad de veces necesaria para los cada alumno.
-        print(f"A continuación, ingrese las notas para el alumno #{a} o toque [Enter] para pasar al siguiente alumno.")
-        while True:
-            m = input(f'Ingrese una nota para el alumno {a}: ')
+        print(f"\nA continuación, ingrese las notas para el alumno #{a}.")
+        for i in range(x):
+            m = input(f'Ingrese la nota {i + 1}/{x} para el alumno #{a}: ')
             test_1 = m.isdigit()  # verifica que el input sea un número
             test_2 = test_1 and 1 <= int(m) <= 10  # verifica que el input sea un número entre 1 y 10.
             test_3 = not test_1 and m == ''  # verifica que el input este en blanco para pasar al siguiente alumno.
@@ -24,3 +31,5 @@ def cargar_matriz_notas() -> list:
                 matriz[a].append(int(m))  # agregamos la nota a la columna correspondiente al alumno.
 
     return matriz
+
+cargar_matriz_notas()
