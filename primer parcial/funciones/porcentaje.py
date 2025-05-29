@@ -10,8 +10,8 @@ def porcentaje_aprobados(matriz):
                 print(f"Nota {nota} inválida")  # no podemos hacer la suma si la nota no es un integer.
                 break
             elif int(nota) >= 6:
-                notas_aprobadas += 1 # sumamos 1 por cada nota aprobada.
-        porcentaje = round(notas_aprobadas/len(notas_alumno) * 100, 2)
+                notas_aprobadas += 1  # sumamos 1 por cada nota aprobada.
+        porcentaje = round(notas_aprobadas / len(notas_alumno) * 100, 2)
         # calculamos el porcentaje de las notas; round() es solo para prolijidad.
 
         text1 = f"El porcentaje de aprobación del alumno #{i} es:"
